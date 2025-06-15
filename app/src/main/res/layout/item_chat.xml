@@ -1,0 +1,51 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="12dp"
+    android:id="@+id/lin"
+    android:background="@drawable/item_background"
+    android:layout_marginBottom="2dp">
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/avatar1"/>
+
+    <!-- Nama Pengirim -->
+    <TextView
+        android:id="@+id/tvSenderName"
+        android:layout_width="wrap_content"
+        android:layout_toEndOf="@id/img"
+        android:layout_marginLeft="10dp"
+        android:layout_height="wrap_content"
+        android:text="Sender Name"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="#000" />
+
+    <!-- Pesan Terakhir -->
+    <TextView
+        android:id="@+id/tvLastMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvSenderName"
+        android:layout_marginTop="4dp"
+        android:layout_toEndOf="@id/img"
+        android:singleLine="true"
+        android:layout_marginLeft="10dp"
+        android:text="Last message content here..."
+        android:textSize="14sp"
+        android:textColor="#666" />
+
+    <!-- Waktu -->
+    <TextView
+        android:id="@+id/tvMessageTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:text="10:30 AM"
+        android:textSize="12sp"
+        android:textColor="#999" />
+</RelativeLayout>

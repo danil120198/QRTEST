@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="16dp">
+
+        <!-- Text Register -->
+        <TextView
+            android:id="@+id/tvLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="50dp"
+            android:text="Register"
+            android:textColor="@color/biru"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- Nama Lengkap Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/namaInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Nama Lengkap"
+            app:endIconMode="clear_text">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etnama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:textColor="@color/biru"
+                android:textColorHint="#808080" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Username Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/usernameInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Username"
+            app:endIconMode="clear_text">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:textColor="@color/biru"
+                android:textColorHint="#808080" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- No Handphone Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nohpInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="No Handphone"
+            app:endIconMode="clear_text">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etnohp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:textColor="@color/biru"
+                android:textColorHint="#808080" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Password Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:hint="Password"
+            app:endIconMode="password_toggle">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textColor="@color/biru"
+                android:textColorHint="#808080" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Foto Wajah -->
+        <TextView
+            android:id="@+id/tvFotoWajah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Foto Wajah"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/biru"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/imgFotoWajah"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/ic_image_placeholder"
+            android:scaleType="centerCrop"
+            android:background="#F0F0F0" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnUploadFotoWajah"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Unggah Foto Wajah"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="@color/biru"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Foto KTP -->
+        <TextView
+            android:id="@+id/tvFotoKTP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Foto KTP"
+            android:textColor="@color/biru"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/imgFotoKTP"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/ic_ktp"
+            android:background="#F0F0F0" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnUploadFotoKTP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Unggah Foto KTP"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="@color/biru"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Register Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/biru"
+            android:text="Register"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="16dp">
+
+        <!-- Text Register Petugas -->
+        <TextView
+            android:id="@+id/tvRegisterPetugas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="50dp"
+            android:text="Register Petugas"
+            android:textColor="@color/biru"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- Nama Lengkap -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/namaInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Nama Lengkap"
+            app:endIconMode="clear_text">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etNamaLengkap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:textColor="@color/biru"
+                android:textColorHint="#808080" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Username -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/usernameInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Username"
+            app:endIconMode="clear_text">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:textColor="@color/biru"
+                android:textColorHint="#808080" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- No Handphone -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nohpInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Nomor Handphone"
+            app:endIconMode="clear_text">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etNoHp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:textColor="@color/biru"
+                android:textColorHint="#808080" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Tanggal Lahir -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tanggalLahirInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Tanggal Lahir"
+            app:endIconMode="clear_text">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etTanggalLahir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="date"
+                android:textColor="@color/biru"
+                android:textColorHint="#808080" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Alamat Lengkap -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/alamatInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Alamat Lengkap"
+            app:endIconMode="clear_text">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etAlamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:maxLines="3"
+                android:textColor="@color/biru"
+                android:textColorHint="#808080" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- NIK -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nikInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Nomor NIK"
+            app:endIconMode="clear_text">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etNIK"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:textColor="@color/biru"
+                android:textColorHint="#808080" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Foto Wajah -->
+        <TextView
+            android:id="@+id/tvFotoWajah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Foto Wajah"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/biru"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/imgFotoWajah"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/ic_image_placeholder"
+            android:scaleType="centerCrop"
+            android:background="#F0F0F0" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnUploadFotoWajah"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Unggah Foto Wajah"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="@color/biru"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Foto KTP -->
+        <TextView
+            android:id="@+id/tvFotoKTP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Foto KTP"
+            android:textColor="@color/biru"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/imgFotoKTP"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/ic_ktp"
+            android:background="#F0F0F0" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnUploadFotoKTP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Unggah Foto KTP"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="@color/biru"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Nomor Izin Praktek -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/izinPraktekInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Nomor Izin Praktek (Opsional)"
+            app:endIconMode="clear_text">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etIzinPraktek"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:textColor="@color/biru"
+                android:textColorHint="#808080" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Nomor Tanda Registrasi -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tandaRegistrasiInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Nomor Tanda Registrasi (Opsional)"
+            app:endIconMode="clear_text">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etTandaRegistrasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:textColor="@color/biru"
+                android:textColorHint="#808080" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Upload Surat Izin Praktek -->
+        <TextView
+            android:id="@+id/tvSuratIzinPraktek"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Unggah Dokumen Surat Izin Praktek (Opsional)"
+            android:textColor="@color/biru"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:id="@+id/tvFileSuratIzinPraktek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Belum ada file dipilih"
+            android:textColor="@android:color/darker_gray"
+            android:background="#F0F0F0"
+            android:padding="8dp"
+            android:layout_marginBottom="8dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnUploadSuratIzinPraktek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pilih File"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="@color/biru"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Upload Tanda Registrasi -->
+        <TextView
+            android:id="@+id/tvTandaRegistrasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Unggah Dokumen Tanda Registrasi (Opsional)"
+            android:textColor="@color/biru"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tvFileTandaRegistrasi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Belum ada file dipilih"
+            android:textColor="@android:color/darker_gray"
+            android:background="#F0F0F0"
+            android:padding="8dp"
+            android:layout_marginBottom="8dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnUploadTandaRegistrasi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pilih File"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="@color/biru"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Password Login -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordLoginInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:hint="Password"
+            app:endIconMode="password_toggle">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPasswordLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textColor="@color/biru"
+                android:textColorHint="#808080" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <TextView
+            android:id="@+id/tvIncidentTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Insiden Yang Sesuai Dengan Anda"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#000"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Spinner untuk menampilkan data -->
+        <Spinner
+            android:id="@+id/spinnerIncident"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvIncidentTitle"
+            android:layout_marginBottom="20dp"
+            android:padding="12dp" />
+
+        <!-- Register Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRegisterPetugas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/biru"
+            android:text="Register"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+    </LinearLayout>
+</ScrollView>

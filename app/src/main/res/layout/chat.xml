@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="#EAEDED">
+
+    <!-- RecyclerView untuk Daftar Pesan -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvChat"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp"
+        tools:listitem="@layout/chat_item"
+        android:paddingBottom="10dp"
+        android:clipToPadding="false" />
+
+    <!-- Input Pesan -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:background="@drawable/button_register_outline"
+        android:padding="8dp">
+
+        <!-- Input Text -->
+        <EditText
+            android:id="@+id/etMessage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Type a message"
+            android:background="@null"
+            android:padding="8dp"
+            android:layout_marginRight="5dp"
+            android:textColor="#000000"
+            android:textColorHint="#888888"
+            android:inputType="text" />
+
+        <!-- Tombol Kirim -->
+        <ImageButton
+            android:id="@+id/btnSend"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/sent"
+            android:padding="5dp"
+            android:background="@drawable/send_button_background"
+            android:contentDescription="Send" />
+        <ImageButton
+            android:id="@+id/btnfile"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/baseline_attach_file_24"
+            android:padding="5dp"
+            android:background="@drawable/send_button_background"
+            android:contentDescription="Send" />
+    </LinearLayout>
+</LinearLayout>
