@@ -1,5 +1,6 @@
 package com.laundry.qrtest;
 
+import static androidx.constraintlayout.widget.ConstraintSet.VISIBLE;
 import static androidx.core.app.ServiceCompat.stopForeground;
 
 import android.annotation.SuppressLint;
@@ -39,6 +40,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
@@ -584,7 +586,7 @@ public class HomeUser extends AppCompatActivity implements OnMapReadyCallback, H
                                     }
                                 });
 //                                alert.show();
-                                showCustomDialog();
+                                showCustomDialog(title);
                                 btnAdd.setImageResource((R.drawable.chat));
 
                                 SharedPrefManager sharedPrefManager = new SharedPrefManager(HomeUser.this);
@@ -676,7 +678,7 @@ public class HomeUser extends AppCompatActivity implements OnMapReadyCallback, H
                             }
                         });
 //                        alert.show();
-                        showCustomDialog();
+                        showCustomDialog(title);
                         Bundle bundle = getIntent().getExtras();
                         SharedPrefManager sharedPrefManager = new SharedPrefManager(HomeUser.this);
                         if (bundle!=null){
@@ -2011,7 +2013,7 @@ public class HomeUser extends AppCompatActivity implements OnMapReadyCallback, H
 //    }
 
 
-    private void showCustomDialog() {
+    private void showCustomDialog(String keluhan) {
         // Membuat instance dialog
         customDialog = new Dialog(this);
         customDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -2028,12 +2030,13 @@ public class HomeUser extends AppCompatActivity implements OnMapReadyCallback, H
         }
 
         // Inisialisasi view di dalam dialog
-        TextView nm_petugas = customDialog.findViewById(R.id.nm_petugas);
+        TextView hasil = customDialog.findViewById(R.id.nm_petugas);
         ImageView loading = customDialog.findViewById(R.id.loading);
 
         Glide.with(HomeUser.this).asGif().load(R.drawable.loading).into(loading);
 
-        getEmergencyDataPetugasNearby(nm_petugas,sharedPrefManager.getIdClient());
+//        getEmergencyDataPetugasNearby(nm_petugas,sharedPrefManager.getIdClient());
+        kirimKeServer(keluhan,lat+","+lng,hasil);
 
         // Menangani tombol OK
 //        btnOK.setOnClickListener(view -> {
@@ -2044,18 +2047,18 @@ public class HomeUser extends AppCompatActivity implements OnMapReadyCallback, H
 //        });
 
         // Menjalankan timer untuk menutup dialog setelah 20 detik
-        closeDialogRunnable = () -> {
-            if (customDialog.isShowing()) {
-                Toast.makeText(HomeUser.this, "Panggilan tidak di jawab, silakan coba lagi", Toast.LENGTH_SHORT).show();
-                imgProfile.setVisibility(View.VISIBLE);
-                int a = Integer.parseInt(sharedPrefManager.getIdClient()) + 1;
-                sharedPrefManager.saveSPString(SharedPrefManager.ID_CLIENT,a+"");
-                prosesEndUser();
-//                customDialog.dismiss();
-
-            }
-        };
-        handler.postDelayed(closeDialogRunnable, 30000); // 30 detik
+//        closeDialogRunnable = () -> {
+//            if (customDialog.isShowing()) {
+//                Toast.makeText(HomeUser.this, "Panggilan tidak di jawab, silakan coba lagi", Toast.LENGTH_SHORT).show();
+//                imgProfile.setVisibility(View.VISIBLE);
+//                int a = Integer.parseInt(sharedPrefManager.getIdClient()) + 1;
+//                sharedPrefManager.saveSPString(SharedPrefManager.ID_CLIENT,a+"");
+//                prosesEndUser();
+////                customDialog.dismiss();
+//
+//            }
+//        };
+//        handler.postDelayed(closeDialogRunnable, 30000); // 30 detik
 
         // Tampilkan dialog
         customDialog.show();
@@ -2127,6 +2130,91 @@ public class HomeUser extends AppCompatActivity implements OnMapReadyCallback, H
         });
 
         rq.add(jsonObjectRequest);
+    }
+
+
+
+
+    private void kirimKeServer(String keluhan, String lokasi, TextView tvHasil) {
+
+
+        String url = Data.SERVER + "qr_test/deteksi_poli.php";
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                response -> {
+                    try {
+                        JSONObject json = new JSONObject(response);
+                        if (json.getBoolean("status")) {
+                            String poli = json.getString("poli");
+                            JSONObject dokter = json.getJSONObject("dokter_terdekat");
+
+                            String namaDokter = dokter.getString("nama_lengkap");
+                            String spesialisasi = dokter.getString("layanan");
+                            String username = dokter.getString("username");
+                            String latlng = dokter.getString("latlng");
+                            double jarakKm = dokter.getDouble("jarak_km");
+
+                            String hasil = "Poli: " + poli + "\n"
+                                    + "Dokter: " + namaDokter + "\n"
+                                    + "Spesialis: " + spesialisasi + "\n"
+                                    + "Lokasi: " + latlng + "\n"
+                                    + "Jarak: " + jarakKm + " km";
+
+                            tvHasil.setText(hasil);
+                            TextView textView = findViewById(R.id.textView);
+                            Button cancel = customDialog.findViewById(R.id.cancel);
+                            cancel.setVisibility(View.VISIBLE);
+                            cancel.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    customDialog.dismiss();
+                                    prosesEndUser();
+                                }
+                            });
+                            textView.setText("Menunggu Petugas");
+                            Data.sendNotification(getApplicationContext(),"Emergency Call",title,username+"");
+                            proses(username);
+                        } else {
+//                            tvHasil.setText("Gagal: " + json.getString("message"));
+
+//                            getEmergencyDataPetugasNearby( tvHasil,sharedPrefManager.getIdClient());
+//                            Button cancel = customDialog.findViewById(R.id.cancel);
+//                            cancel.setVisibility(View.VISIBLE);
+//                            cancel.setOnClickListener(new View.OnClickListener() {
+//                                @Override
+//                                public void onClick(View v) {
+//                                    customDialog.dismiss();
+//                                }
+//                            });
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+//                        getEmergencyDataPetugasNearby( tvHasil,sharedPrefManager.getIdClient());
+//                        Button cancel = customDialog.findViewById(R.id.cancel);
+//                        cancel.setVisibility(View.VISIBLE);
+//                        cancel.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View v) {
+//                                customDialog.dismiss();
+//                            }
+//                        });
+//                        tvHasil.setText("Parsing error: " + e.getMessage());
+                    }
+                },
+                error -> {
+                    Toast.makeText(this, "Gagal koneksi: " + error.getMessage(), Toast.LENGTH_LONG).show();
+                }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> param = new HashMap<>();
+                param.put("keluhan", keluhan);
+                param.put("lokasi", lokasi);
+                return param;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
     }
 
 

@@ -20,7 +20,7 @@ public class Data {
     static ProgressDialog pDialog;
 //    public static final String SERVER = "http://172.20.10.4/";
 //      public static final String SERVER = "http://10.0.2.2/";
-//    public static final String SERVER = "http://192.168.100.4/";
+//    public static final String SERVER = "http://192.168.100.6/";
 //    public static final String SERVER = "http://develovit.com/";
     public static final String SERVER = "https://fastmedas.com/";
 
